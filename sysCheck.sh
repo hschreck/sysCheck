@@ -1,1 +1,2 @@
 ./updateSysCheck.sh
+./runSysCheck.sh
