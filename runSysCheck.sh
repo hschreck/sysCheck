@@ -1,5 +1,4 @@
 xdpyinfo | grep dimensions
 lspci | grep VGA
 lscpu | grep 'Model name'
-acpi -i | grep capacity
-
+upower -e | grep battery | xargs upower -i
