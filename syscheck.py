@@ -16,7 +16,7 @@ currentcap = os.popen("upower -e | grep battery | xargs upower -i | grep energy-
 modelName = os.popen("sudo dmidecode --type 1 | grep 'Product Name' | sed 's/.*: //g' ").read()
 
 if modelName in workaroundModels:
-    designcap = float(designcap) * float(designvolt) / 1000000
+    designcap = float(designcap)/1000 * float(designvolt)/1000 
 else:
     designcap = float(designcap) / 1000
 
