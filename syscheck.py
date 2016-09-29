@@ -18,7 +18,6 @@ modelName = modelName.rstrip("\n")
 print("Model         : " + modelName)
 if modelName in workaroundModels:
     designcap = float(designcap)/1000 * float(designvolt)/1000
-    print("Hey, using the workaround")
 else:
     designcap = float(designcap) / 1000
 
@@ -36,3 +35,5 @@ elif health > health_mid :
 else:
     print("Battery not detected or is dead.")
 
+if modelName in workaroundModels:
+    print("This was calculated using a workaround for improperly-reported levels; if this reads 100% or just seems wrong, contact harold.schreckengost@er2.com")
