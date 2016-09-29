@@ -1,6 +1,6 @@
 import os
 
-workaroundModels= [
+workaroundModels=[ 
         'HP EliteBook 2540p',
         ]
 
