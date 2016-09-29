@@ -1,7 +1,7 @@
 import os
 
 workaroundModels=[ 
-        "HP EliteBook 2540p",
+        "HP EliteBook 2540p"
         ]
 
 health_low=50
