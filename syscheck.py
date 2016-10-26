@@ -22,7 +22,7 @@ currentcap=float(currentcap)
 
 #Allows up to 110% of capacity before using workaround
 if (currentcap/designcap) > 1.1:
-    designcap = designcap * designvolt / 1000
+    designcap = designcap * (float(designvolt) / 1000 )
     workaround = 1
 health = round((currentcap/designcap) * 100, 2)
 
