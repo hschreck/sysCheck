@@ -1,8 +1,5 @@
 import os
-
-workaroundModels=[ 
-        "HP EliteBook 2540p"
-        ]
+workaround = 0
 
 health_low=50
 health_mid=80
@@ -16,14 +13,17 @@ currentcap = os.popen("upower -e | grep battery | xargs upower -i | grep energy-
 modelName = os.popen("sudo dmidecode --type 1 | grep 'Product Name' | sed -e 's/.*: //g' ").read()
 modelName = modelName.rstrip("\n")
 print("Model         : " + modelName)
-if modelName in workaroundModels:
-    designcap = float(designcap)/1000 * float(designvolt)/1000
-else:
-    designcap = float(designcap) / 1000
+designcap = float(designcap) / 1000
 
 currentcap=float(currentcap)
 #print(designcap)
 #print(currentcap)
+#modified workaround based on battery percentage being reported incorrectly instead of on model
+
+#Allows up to 110% of capacity before using workaround
+if (currentcap/designcap) > 1.1:
+    designcap = designcap * designvolt / 1000
+    workaround = 1
 health = round((currentcap/designcap) * 100, 2)
 
 if health < health_low :
@@ -35,5 +35,5 @@ elif health > health_mid :
 else:
     print("Battery not detected or is dead.")
 
-if modelName in workaroundModels:
+if workaround == 1:
     print("This was calculated using a workaround for improperly-reported levels; if this reads 100% or just seems wrong, contact harold.schreckengost@er2.com")
