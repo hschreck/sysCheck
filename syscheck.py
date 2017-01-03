@@ -1,7 +1,7 @@
 import os
 workaround = 0
 
-health_low=50
+health_low=60
 health_mid=80
 
 designcap = os.popen("sudo dmidecode --type 22 | grep 'Design Capacity' | sed 's/[^0-9]*//g' ").read()
